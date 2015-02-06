@@ -1,7 +1,7 @@
 <?php
 if ($_GET['run']) {
   # This code will run if ?run=true is set.
-  exec("./Speech.sh testing!");
+  exec("/var/www/talkinghead/Speech.sh testing!");
 }
 ?>
 

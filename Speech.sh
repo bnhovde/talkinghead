@@ -38,9 +38,3 @@ for key in "${!SHORT[@]}"
     NEXTURL=$(echo ${SHORT[$key]} | xxd -plain | tr -d '\n' | sed 's/\(..\)/%\1/g')
     mpg123 -q "http://translate.google.com/translate_tts?tl=en&q=$NEXTURL"
 done
-
-
-
-
-
-
