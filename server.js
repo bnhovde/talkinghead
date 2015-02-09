@@ -1,4 +1,9 @@
-var Speak = require('tts-speak');
+
+var http = require('http'), // http module
+	fs = require('fs'),  // file system module
+	qs = require('qs'); // querystring parser
+	Speak = require('tts-speak'); // tts-speak module
+
 var speak = new Speak({
     tts: {
         engine: 'google',               // The engine to use for tts
@@ -15,21 +20,36 @@ var speak = new Speak({
     loglevel: 0                         // Wrapper log level
 });
 
-speak.once('ready', function() {
+// store the contents of 'index.html' to a buffer
+var html = fs.readFileSync('./index.html');
 
-    // Chaining
-    speak
-        .say("Hello and welcome here !")
-        // .wait(1000)
-        // .say({
-        //     src: 'Parlez-vous français ?',
-        //     lang: 'fr-fr',
-        //     speed: 30
-        // });
+// create the http server
+http.createServer(function (req, res) {
 
-    // Catch when all queue is complete
-    speak.once('idle', function() {
-        speak.say("Of course, with my new text to speech wrapper !");
-    });
+  // handle the routes
+  if (req.method == 'POST') {
 
-});
+    // pipe the request data to the console
+    req.pipe(process.stdout);
+
+    speak.once('ready', function() {
+	    speak.say("lorem sandwich!");
+	});
+
+    // pipe the request data to the response to view on the web
+    // res.writeHead(200, {'Content-Type': 'text/plain'});
+    // req.pipe(res);
+
+  } else {
+    
+    // for GET requests, serve up the contents in 'index.html'
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(html);
+  }
+
+}).listen(8000);
+
+
+
+
+

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/bnhovde/talkinghead",
   "dependencies": {
-    "tts-speak": "^0.9.6"
+    "tts-speak": "^0.9.6",
+    "qs": "*"
   }
 }
