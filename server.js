@@ -34,7 +34,7 @@ speak.once('ready', function() {
 	    // pipe the request data to the console
 	    req.pipe(process.stdout);
 
-		    speak.say("lorem sandwich!");
+		speak.say("lorem sandwich!");
 
 	    // pipe the request data to the response to view on the web
 	    res.writeHead(200, {'Content-Type': 'text/plain'});
