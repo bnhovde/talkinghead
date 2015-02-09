@@ -1,0 +1,28 @@
+{
+  "name": "talkinghead",
+  "version": "1.0.0",
+  "description": "nodejs tts server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bnhovde/talkinghead.git"
+  },
+  "keywords": [
+    "nodejs",
+    "tts",
+    "api"
+  ],
+  "author": "cdd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bnhovde/talkinghead/issues"
+  },
+  "homepage": "https://github.com/bnhovde/talkinghead",
+  "dependencies": {
+    "tts-speak": "^0.9.6"
+  }
+}
