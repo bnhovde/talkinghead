@@ -23,31 +23,32 @@ var speak = new Speak({
 // store the contents of 'index.html' to a buffer
 var html = fs.readFileSync('./index.html');
 
-// create the http server
-http.createServer(function (req, res) {
+speak.once('ready', function() {
 
-  // handle the routes
-  if (req.method == 'POST') {
+	// create the http server
+	http.createServer(function (req, res) {
 
-    // pipe the request data to the console
-    req.pipe(process.stdout);
+	  // handle the routes
+	  if (req.method == 'POST') {
 
-    speak.once('ready', function() {
-	    speak.say("lorem sandwich!");
-	});
+	    // pipe the request data to the console
+	    req.pipe(process.stdout);
 
-    // pipe the request data to the response to view on the web
-    // res.writeHead(200, {'Content-Type': 'text/plain'});
-    // req.pipe(res);
+		    speak.say("lorem sandwich!");
 
-  } else {
-    
-    // for GET requests, serve up the contents in 'index.html'
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end(html);
-  }
+	    // pipe the request data to the response to view on the web
+	    res.writeHead(200, {'Content-Type': 'text/plain'});
+	    req.pipe(res);
 
-}).listen(8000);
+	  } else {
+	    
+	    // for GET requests, serve up the contents in 'index.html'
+	    res.writeHead(200, {'Content-Type': 'text/html'});
+	    res.end(html);
+	  }
+
+	}).listen(8000);
+});
 
 
 
