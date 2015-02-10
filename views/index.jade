@@ -3,5 +3,5 @@ extends layout
 block content
     h1= title
     p What's up? Type something below
-    form(action='/talk',method='post')
+    form(action='/talk/',method='post')
         input(id='text',type='text',value='',placeholder='',name='text')
