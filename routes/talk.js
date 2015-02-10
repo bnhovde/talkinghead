@@ -9,6 +9,10 @@ var fs = require('fs'),  // file system module
 /* GET users listing. */
 router.post('/', function(req, res, next) {
 
+    var text = req.body.text;
+
+    console.log("Reading text: " + text);
+
     // res.send('respond with a resource');
     var speak = new Speak({
         tts: {
@@ -26,9 +30,9 @@ router.post('/', function(req, res, next) {
         loglevel: 0                         // Wrapper log level
     });
     speak.once('ready', function() {
-        speak.say("lorem sandwich!");
+        speak.say(text);
     });
-    
+
 });
 
 module.exports = router;
